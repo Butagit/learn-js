@@ -1,18 +1,47 @@
 "use sctrict";
-// работа в современном режиме
 
-let number = 5;  
+let number = 4.6;
 
-// переменная может изменяться
+// infinity можно получить делением на ноль
+console.log(-4/0);
 
-const name = 1;
+// NaN операция которая не подлежит математzической логике
+console.log('string' * 3);
 
-// переменная не может изменяться
+// строкаz
+const persone = "5";
 
-number = 10;
+const bool = false
 
-// можем присвоить другое значение
+console.log(something);
 
-console.log(number);
+// значение undefined, пример с холодильников
+let und;
+console.log(und);
 
-// выводит в консоль
+
+// создание обьекта
+const obj = {
+    name: "John", 
+    // name - ключ, John - значение
+    age: 25,
+    isMarried: false,
+};
+
+//  что бы добраться до значение определенного совйства есть 2 способа через точку или [] 
+
+//  1 способ
+console.log(obj.name);
+
+// 2 способ
+console.log(obj["name"]); 
+
+
+// массив
+let arr = ['plum.png', 'orange.jpg', 6, 'apple.bmp', {}, []];
+        //    0          1          2    3           4   5
+        // есть определенная нумирацияя (как ключ)
+
+
+// обращение к каждому элементу
+console.log(arr[1]);
