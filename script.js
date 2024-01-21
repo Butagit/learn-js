@@ -1,4 +1,4 @@
-"use strict";
+"use sctrict";
 // работа в современном режиме
 
 let number = 5;  
