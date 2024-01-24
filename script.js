@@ -1,21 +1,44 @@
 "use strict";
 
-const number0films = prompt('Сколько фильмов вы уже посмотрели?', '');
+if (4 == 9) {
+    console.log('ok'); 
+    // если выражение верно то пишеться то что в скобках
+} else {
+    console.log('error'); 
+    // если же не верно пишеться то что в скобках
+} 
+ 
+// 1 способ
+// const num = 50;
 
-const personalMovieDB = {
-    count: number0films,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
+// if (num < 49) {
+    // console.log('error');
+// } else if (num > 100) {
+    // console.log('more');
+// } else {
+    // console.log('ok');
+// }
 
-const a = prompt('Сколько фильмов вы уже посмотрели?', ''),
-      b = prompt('На сколько оцените его?', ''),
-      с = prompt('Сколько фильмов вы уже посмотрели?', ''),
-      d = prompt('На сколько оцените его?', '');
+// 2 способ
+// тернарный оператор
+// (num === 50) ? console.log('ok') : console.log('error');
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+const num = 51;
 
-console.log(personalMovieDB);
+// модификация которая поддерживает несколько проверок и условий
+switch (num) {
+    // для того что бы начать проверку надо написать кейс
+    case 49:
+        console.log('ne');
+        break;
+    case 100:
+        console.log('no');
+        break;  
+    case 50:
+        console.log('yes');
+        break;
+// выбрать какое то действие по умолчанию если ни один кейс не сработал
+    default:
+        console.log('ne v etot raz');
+        break;
+}
