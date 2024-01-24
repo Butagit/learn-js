@@ -1,47 +1,34 @@
 "use sctrict";
 
-let number = 4.6;
+// команда alert используеться что бы предупредить пользователя о чем-то важном
+// alert('Hello');
 
-// infinity можно получить делением на ноль
-console.log(-4/0);
+// спросить что то у пользователя
+// const result = confirm("Are you here?");
+// console.log(result);
 
-// NaN операция которая не подлежит математzической логике
-console.log('string' * 3);
+// команда для конкретного ответа пользователя
 
-// строкаz
-const persone = "5";
+// const answer = +prompt("Вам есть 18", "18");
+// что бы поменять (тип данных) значение строка на цифры нажно поставить + 
 
-const bool = false
+// const answer = +prompt("Вам есть 18", "18");
 
-console.log(something);
+// что бы увидеть тип данных в которых будешь лежать переменная нужно прописать typeof
 
-// значение undefined, пример с холодильников
-let und;
-console.log(und);
+// console.log(typeof(answer));
+// console.log(answer + 5);
+// что бы проверить нужно написать console.log(answer + 5);
+// !!! ВСЯ ИНФОРМАЦИЯ КОТОРАЯ ПРИХОДИТ ОТ ПОЛЬЗОВАТЕЛЯ БУДЕТ В ВИДЕ СТРОК
 
+const answers = [];
 
-// создание обьекта
-const obj = {
-    name: "John", 
-    // name - ключ, John - значение
-    age: 25,
-    isMarried: false,
-};
+answers[0] = prompt('как ваше имя?', '');
+answers[1] = prompt('как ваше фамилия?', '');
+answers[2] = prompt('как ваше отчество?', '');
 
-//  что бы добраться до значение определенного совйства есть 2 способа через точку или [] 
+// команда которая замещает весь контент на сайте
+// document.write(answers);
 
-//  1 способ
-console.log(obj.name);
-
-// 2 способ
-console.log(obj["name"]); 
-
-
-// массив
-let arr = ['plum.png', 'orange.jpg', 6, 'apple.bmp', {}, []];
-        //    0          1          2    3           4   5
-        // есть определенная нумирацияя (как ключ)
-
-
-// обращение к каждому элементу
-console.log(arr[1]);
+// проверка answers на тип данных
+console.log(typeof(answers));
