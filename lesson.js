@@ -1,50 +1,111 @@
 "use strict";
 
-// const arr = [1, 2, 3, 6, 8, 10];
-// соотношение между свойством length и массивом, свойство length состоит из последнего индекса + 1
-// console.log(arr.length);
-// методы которые работают с концом массива
-// удаляет последний элемент с нашего массива
-// arr.pop();  
+let a = 5,
+    b = a;
 
-// этот эдемент позволяет нам быстро перебрать все элементы находящие в массивы, этот перебор можно настроить более подробнее!!!
-// первый аргумент тот элемент который мы сейчас перебираем item
-// следующий аргумент этот номер по порядку i
-// 3 элемент это ссылка на тот массив который мы перебираем
-// обычно все испльзуют этот способ для перебора 
-// arr.forEach(function(item, i, arr) {
-//     console.log(`${i}: ${item} внутри массива ${arr}`);
-// });
+b = b + 5;
 
-// добавляет элемент в конце массива
-// arr.push(10);
+console.log(a);
+console.log(b);
 
-// console.log(arr);
-// что бы перегбрать все элементы массива мы можем написать
-// этот цикл будет вырабатывать до тех пор пока не закончаться все элементы массива
-// for (let i = 0; i < arr.length; i++) {
-    //     console.log(arr[i]);
-    // }
-    
-    // ТАКИЕ КОНСТРУКЦИИ ДЛЯ ПЕРЕБОРА РАБОТАЮТ ТОЛЬКО С МАССИВАМИ!!!!
-// по мимо обычного цикла мы можем использовать,конструкцию перебора которая называеться for of 
-// в этом методе есть свой +, тут мы можем использовать break и continue
-// for (let value of arr) {
-//     console.log(value);
-// }
-// что бы сформировать массив на основание строк
-// const str = prompt("", ""):
-// const products = str.split("", "");
-// для сортировки, сортирует все как строки
-// products.sort();
-// что бы правильно отсортировать числа нужно
-// function compareNum(a, b) {
-//     return a - b;
-// }
+const obj = {
+    a: 5,
+    b: 1
+};
 
-// console.log(products.join('; '));
-// join нужен для того чтобы соединить массив с элементами
+// const copy = obj; //передавали сыылку
 
-// на основание массива можем сформировать большую строку
+// copy.a = 10;
 
-// ПСЕВДО МАССИВ ЭТО ОБЬЕКТ СТРУКТУРА КОТОРАЯ СОВПАДАЕТ СО СТРУКТУРОЙ МАССИВА, У ПСЕВДО МАССИВОВ НЕТУ НИКАКИХ МЕТОДОМ!!
+// console.log(copy);
+
+// это функция создаст новый обьект перебирая старый
+function copy(mainObj) {
+    let objCopy = {};
+
+// дальше мы запускаем перебирающую конструкицю которая называеться for in
+    let key;
+    for (key in mainObj) {
+        objCopy[key] = mainObj[key];
+    }
+    return objCopy;
+}
+
+const numbers = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4
+    }
+};
+
+// const newNumbers = copy(numbers);
+
+// newNumbers.a = 10;
+
+// console.log(newNumbers);
+// console.log(numbers);
+
+// ЕСТЬ 2 ОЧЕНЬ ВАЖНЫХ ПОНЯТИЯ ЭТО ГЛУБОКИЙ И ПОВЕРХНОСТНЫЕ КОПИИ!!!
+// ПОВЕРХНОСТНАЯ КОПИЯ БЕРЕТ ВСЕ СВОЙСТВО ЧТО БЫЛИ В РОДИТЕЛЕЙ И СОЗДАЕТ НЕЗАВИСИМУЮ СТРУКТУРУ
+
+
+const add = {
+    d: 17,
+    e:20
+};
+
+// Что бы поместить (соединить) маленький обьект в большой нужно
+// console.log(Object.assign(numbers, add));
+
+// что бы копировать в пустой обьект
+const clone = Object.assign({}, add); //это поверхностная копия
+
+clone.d = 24;
+
+console.log(add);
+console.log(clone);
+
+// ЧТО БЫ СОЗДАТЬ КОПИЮ МАССИВА
+
+const oldArray = ['a', 'b', 'c'];
+// создаем новую переменную обращаемся к oldArray, если мы это так оставим то у нас положиться сыылка на массив
+// slice - метод который позваоляет просто скопировать массив
+
+const newArray = oldArray.slice();
+
+newArray[1] = 'ncjscn';
+console.log(newArray);
+console.log(oldArray);
+
+// ОПЕРАТОР РАЗВОРОТА - SPREAD - разворачивает структуру и превращает ее в набор каких-то данных
+
+const video = ['youtube', 'vimeo', 'rutube'],
+      blogs = ['wordpress', 'livejournal', 'bloggers'],
+      interner = [...video, ...blogs, 'vk', 'instagram'];
+
+console.log(interner);
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+  }
+
+const num = [2, 5, 7];
+
+log(...num);
+
+const array = ['a', 'b'];
+
+const newAArray = [...array];
+console.log(newAArray);
+
+const q = {
+    one: 1,
+    two: 2
+};
+
+const newObject = {...q};
+console.log(newObject);
