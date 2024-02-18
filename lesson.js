@@ -1,111 +1,37 @@
 "use strict";
 
-let a = 5,
-    b = a;
+// ООП это наука о том как делать правильную архитерктуру
 
-b = b + 5;
+let str = "some";
+// на основание этой строчки мы создаем новую строчку
+let strObj = new String(str); //теперь это новый обьект
 
-console.log(a);
-console.log(b);
+console.log(typeof(str));
+console.log(typeof(strObj));
 
-const obj = {
-    a: 5,
-    b: 1
-};
+console.dir([1, 2, 3]);
 
-// const copy = obj; //передавали сыылку
-
-// copy.a = 10;
-
-// console.log(copy);
-
-// это функция создаст новый обьект перебирая старый
-function copy(mainObj) {
-    let objCopy = {};
-
-// дальше мы запускаем перебирающую конструкицю которая называеться for in
-    let key;
-    for (key in mainObj) {
-        objCopy[key] = mainObj[key];
+const soldier = {
+    health: 400,
+    armor: 100,
+    sayHello: function() {
+        console.log("Hello");
     }
-    return objCopy;
-}
+}; 
 
-const numbers = {
-    a: 2,
-    b: 5,
-    c: {
-        x: 7,
-        y: 4
-    }
-};
+const john = Object.create(soldier); //мы создаем обьект джон которые будет насоедоваться от оббькта солдат, ЭТО ВСЕ ПРОТОТИПЫ
 
-// const newNumbers = copy(numbers);
+john.sayHello();
 
-// newNumbers.a = 10;
+// const John = {
+//     health:100
+// };
 
-// console.log(newNumbers);
-// console.log(numbers);
+// устаревший метод его использовать не нужно, мы усановили прототипов john солдата
+// John.__proto__ = soldier;  = ЭТОЙ
 
-// ЕСТЬ 2 ОЧЕНЬ ВАЖНЫХ ПОНЯТИЯ ЭТО ГЛУБОКИЙ И ПОВЕРХНОСТНЫЕ КОПИИ!!!
-// ПОВЕРХНОСТНАЯ КОПИЯ БЕРЕТ ВСЕ СВОЙСТВО ЧТО БЫЛИ В РОДИТЕЛЕЙ И СОЗДАЕТ НЕЗАВИСИМУЮ СТРУКТУРУ
+// console.log(John);
+// console.log(John.armor);
 
-
-const add = {
-    d: 17,
-    e:20
-};
-
-// Что бы поместить (соединить) маленький обьект в большой нужно
-// console.log(Object.assign(numbers, add));
-
-// что бы копировать в пустой обьект
-const clone = Object.assign({}, add); //это поверхностная копия
-
-clone.d = 24;
-
-console.log(add);
-console.log(clone);
-
-// ЧТО БЫ СОЗДАТЬ КОПИЮ МАССИВА
-
-const oldArray = ['a', 'b', 'c'];
-// создаем новую переменную обращаемся к oldArray, если мы это так оставим то у нас положиться сыылка на массив
-// slice - метод который позваоляет просто скопировать массив
-
-const newArray = oldArray.slice();
-
-newArray[1] = 'ncjscn';
-console.log(newArray);
-console.log(oldArray);
-
-// ОПЕРАТОР РАЗВОРОТА - SPREAD - разворачивает структуру и превращает ее в набор каких-то данных
-
-const video = ['youtube', 'vimeo', 'rutube'],
-      blogs = ['wordpress', 'livejournal', 'bloggers'],
-      interner = [...video, ...blogs, 'vk', 'instagram'];
-
-console.log(interner);
-
-function log(a, b, c) {
-    console.log(a);
-    console.log(b);
-    console.log(c);
-  }
-
-const num = [2, 5, 7];
-
-log(...num);
-
-const array = ['a', 'b'];
-
-const newAArray = [...array];
-console.log(newAArray);
-
-const q = {
-    one: 1,
-    two: 2
-};
-
-const newObject = {...q};
-console.log(newObject);
+// нужно использовать новые методы
+// Object.setPrototypeOf(John, soldier); //это запись = 
