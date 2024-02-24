@@ -1,75 +1,71 @@
 'use strict';
 
-// function Constructor (name) {
-//     this.name = name;
-//     this.age = 30;
-// }
+let numberOfFilms;
+
+function start() {
+    
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+}
+
+start();
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
 
 
-// console.log(Constructor.age);
-// console.log(new Constructor('Дима'));
-// console.log(new Constructor('Влад'));\
 
-// const obj = {
-//     name: 'Иван',
-//     age: 20,
-//     55 : 'hi'
-// }
+function writeYourGenres() {
+        for (let i = 1; i <= 3; i++) {
+        const gen = prompt(`Ваш любимый жанр под номером ${i}`);
+        personalMovieDB.genres[i - 1] = gen;
+    }
+}
 
-// console.log(obj[55]);
+writeYourGenres();
 
-// let userInfo = {
-//     name: 'David',
-//     age: 20,
-//     address: {
-//         home: 2
-//     }
-// }
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        
+        const one = prompt('Один из последних просмотренных фильмов?', ''),
+        two = prompt('На сколько оцените его?', '');
+        if (one !== null && two !== null && one !== '' && two !== '' && one.length < 50) {
+            personalMovieDB.movies[one] = two;
+        } else {
+          i--;
+        }
+    }
+    
+}
 
-// for (let key in userInfo.address) {
-//     let value = userInfo.address[key];
-//     console.log(value);
-// }
-
-// const userInfo = {
-//     name: 'Вася',
-//     age: 30
-// }
-
-// userInfo.name = 'Лена';
-// delete userInfo.name
-// console.log(userInfo);
+rememberMyFilms();
 
 
-// let sourceName = 1.005 + Number.EPSILON;
-// let numFour = Math.round(sourceName * 100) / 100;
-// console.log(numFour);
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('Просмотренно довольно мало фильмов');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+        console.log('Вы классический зритель');
+    } else if (personalMovieDB.count > 30) {
+        console.log('Вы киноман');
+    } else {
+        console.log('Произошла ошибка');
+    }    
+}
 
+detectPersonalLevel();
 
-// let num = parseFloat( '135.58px');
-// console.log(num);
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
 
-// let value = Math.max(10, 58, 39, -150, 0);
-// console.log(value);
+showMyDB(personalMovieDB.privat);
 
-// let numm = Math.floor(58.858) ;
-// console.log(numm);
-
-// let smail = '\u{1f60d}';
-// console.log(smail);
-
-let text = 'фрилансер';
-console.log(text.includes('лан', 3));
-
-let s = 10 + +'10';
-console.log(s);
-
-// const mass = [
-//     'hohohoh',
-//     function() {
-//         console.log('hi');
-//     },
-//     'hihihi'
-// ]
-// mass[1]();
-// console.log(mass[2]);
