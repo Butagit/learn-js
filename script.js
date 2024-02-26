@@ -1,79 +1,57 @@
 'use strict';
 
-let numberOfFilms;
+// to string
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false,
-    start: () => {
-        while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-            numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-        }
-    },
-    writeYourGenres: () => {
-        for (let i = 1; i <= 3; i++) {
-            let gen = prompt(`Ваш любимый жанр под номером ${i}`);
+// 1
+console.log(String(null));
+// таким способом мы можем превратить любой тип данных в строку
+// console.log(typeof(String(4)));
 
-            if (gen == null && gen == '') {
-                gen--;
-            } else {
-                personalMovieDB.genres[i - 1] = gen;
-            }
-        }  
-        personalMovieDB.genres.forEach((item, i) => {
-            console.log(`Любимый жанр ${i + 1} это ${item}`);
-        });  
-    },
+// 2 способ конкатинация
+console.log(typeof(5 + ''));
 
-    rememberMyFilms: () => {
-        for (let i = 0; i < 2; i++) {
-    
-            const one = prompt('Один из последних просмотренных фильмов?', ''),
-            two = prompt('На сколько оцените его?', '');
-            if (one !== null && two !== null && one !== '' && two !== '' && one.length < 50) {
-                personalMovieDB.movies[one] = two;
-            } else {
-              i--;
-            }
-        }
-    
-    },
-    detectPersonalLevel: () => {
-        if (personalMovieDB.count < 10) {
-            console.log('Просмотренно довольно мало фильмов');
-        } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-            console.log('Вы классический зритель');
-        } else if (personalMovieDB.count > 30) {
-            console.log('Вы киноман');
-        } else {
-            console.log('Произошла ошибка');
-        }    
-    },
-    showMyDB: (hidden) => {
-        if (!hidden) {
-            console.log(personalMovieDB);
-        }
-    },
-    toggleVisibleMyDB: () => {
-        personalMovieDB.privat = !personalMovieDB.privat 
-        }   
-};
+const num = 5;
 
+console.log("https://vk.com/catalog/" + num);
 
+const fontSize = 25 + 'px';
 
-const {start, writeYourGenres, rememberMyFilms, detectPersonalLevel,showMyDB, toggleVisibleMyDB} = personalMovieDB;
+// to number
 
-start();
+// 1 способ
+console.log(typeof(Number('hi')));
 
-writeYourGenres();
+// 2 способ
 
-rememberMyFilms();
+console.log(typeof(+"4"));
 
-detectPersonalLevel();
+// 3 способ
 
-toggleVisibleMyDB();
+console.log(typeof(parseInt('15px', 10)));
 
-showMyDB(personalMovieDB.privat);
+// to boolean 
+// все это будет превращаться в false 
+// 0, '', null, undefined, NaN
+ 
+// 1 способ
+
+let switcher = null;
+
+if (switcher) {
+    console.log('Working...');
+}
+
+switcher = 1;
+
+if (switcher) {
+    console.log('Working...');
+}
+
+// 2 способ
+
+console.log(typeof(Boolean('hi')));
+
+// 3 способ
+
+console.log(typeof(!!'hi'));
+
