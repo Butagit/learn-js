@@ -1,57 +1,36 @@
 'use strict';
+// что бы найти элемент по айди
+// const header = document.getElementById('header');
 
-// to string
+// console.log(header);
 
-// 1
-console.log(String(null));
-// таким способом мы можем превратить любой тип данных в строку
-// console.log(typeof(String(4)));
+// что бы найти элемент по тегу
+// const btns = document.getElementsByTagName('button');
 
-// 2 способ конкатинация
-console.log(typeof(5 + ''));
+// console.log(btns);
 
-const num = 5;
+// если элементов много с таким же тегом и нам надо выбрать один из них нужно
 
-console.log("https://vk.com/catalog/" + num);
+// const btns = document.getElementsByTagName('button'); // или перед ; ставить [нумерация элемента]
 
-const fontSize = 25 + 'px';
+// console.log(btns[2]);// или так
 
-// to number
+// что бы найти элемент по классу 
+// const ref = document.getElementsByClassName('ref');
 
-// 1 способ
-console.log(typeof(Number('hi')));
+// console.log(ref);
 
-// 2 способ
+// СОВРЕМЕННЫЕ МЕТОДЫ!!!!
+// в круглые скобки мы помещаем css селекторы, мы обязательно ставим точку
+// const hearts = document.querySelectorAll('.heart'); //его + в том что у него появляеться 1 метод forEach
 
-console.log(typeof(+"4"));
+// нужно для того что бы вывести все элементи по очереодности в которые находятся в массиве 
+// hearts.forEach(item => {
+//     console.log(item);
+// });
 
-// 3 способ
+// console.log(hearts);
 
-console.log(typeof(parseInt('15px', 10)));
+// const oneHeart = document.querySelectorAll('.heart'); //позволяет получить только один(первый) элемент со страницы
 
-// to boolean 
-// все это будет превращаться в false 
-// 0, '', null, undefined, NaN
- 
-// 1 способ
-
-let switcher = null;
-
-if (switcher) {
-    console.log('Working...');
-}
-
-switcher = 1;
-
-if (switcher) {
-    console.log('Working...');
-}
-
-// 2 способ
-
-console.log(typeof(Boolean('hi')));
-
-// 3 способ
-
-console.log(typeof(!!'hi'));
-
+// console.log(oneHeart);
