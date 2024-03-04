@@ -1,83 +1,80 @@
 'use strict';
-// рефакторинг кода это когда была переменная которая использовалась 1 раз потом оказываеться что она используеться еще раз и мы просто перемещаем ее 
-// сюда
-// то есть создаем переменую
-const header = document.getElementById('header');
-const btns = document.getElementsByTagName('button');
-const ref = document.getElementsByClassName('ref');
-const hearts = document.querySelectorAll('.heart'); 
-const oneHearts = document.querySelector('.heart'); 
-const wrapper = document.querySelector('.wrapper');
-const nan = document.querySelectorAll('.nan');
-// const logo = document.getElementsByClassName('header_logo');
-// header.style.backgroundColor = 'red';
-// header.style.width = '100px';
-btns[2].style.borderRadius = '100%';
-// для класса нужно обязательно указывать его нумерацию
-ref[1].style.backgroundColor = 'red';
 
-// css текст через него можно назначит несколько инлайн стилей
-header.style.cssText = 'background-color: blue; width: 150px';
-// const num = '150';
-// header.style.cssText = `background-color: blue; width: ${num}px `; //можно еще так писать
-// мы делаем перебор если нам надо над несколькими элементами сделать одни и теже действия
-// переменную i нужно начинать и 0 так как элементы в массивах начинаються с 0
-// for (let i = 0; i < hearts.length; i++) {
-//     hearts[i].style.backgroundColor = 'red';
-// };
+let students = {
+    js: [{
+        name: 'Vasya',
+        progress: 100
+    }, {
+        name: 'Jonh',
+        progress: 60
+        }],
 
-// метод forEach работает ТОЛЬКО если используешь querySelectorAll
-hearts.forEach(item => {
-    item.style.backgroundColor = 'red';
-});    
+    html: {
+        basic: [{
+            name: 'anna',
+            progress: 20 
+        }, {
+                name: 'Petya',
+                progress: 18 
+            }],
 
-// основные методы с работой страницы
+        pro: [{
+            name: 'pavel',
+            progress: 10
+        }]
+    }    
+}
 
-const div = document.createElement('div');
-// const text = document.createTextNode('text'); // этот метод используеться очень редко
 
-// что бы поменять элемент координально нужно
-// мы модифицируем css классы элементов
+// function getTotalProgress(data) {
+//     let total = 0;
+//     let student = 0;
+//     for (let course of Object.values(data)) {
+//         if (Array.isArray(course)) {
+//             student += course.length;
 
-div.classList.add('black');
+//             for (let i = 0; i < course.length; i++) {
+//                 total += course[i].progress;
+//             }
+//         } else {
+//             for (let subCourse of Object.values(course)) {
+//                 student += subCourse.length;
 
-// что бы добавить див в конце элемента body нужно
-// document.body.append(div);
-wrapper.append(div);
-// что бы поместить элемент в другого родителя нужно
-// document.querySelector('.header_logo').append(div);
+//                     for (let i = 0; i < subCourse.length; i++) {
+//                         total += subCourse[i].progress;
+//                     }                
+//         }   }
+//     }
 
-// элемент которые вставляет в начало
 
-// wrapper.prepend(div);
 
-// таким способом мы можем ставить элементы перед другими
 
-// hearts[1].before(div);
 
-// таким способом мы можем ставить элементы после других
+//     return total / student;
+// }
 
-// hearts[1].after(div);
+function getTotalProgressRecursion(data) {
+    if (Array.isArray(data)) {
+        let total = 0;
 
-// таким способом можно удалить элемент
+        for (let i = 0; i < data.length; i++) {
+            total += data[i].progress;
+        }
+        return [total, data.length];
+    } else {
+        let total = [0, 0];
+        for ( let subData of Object.values(data)) {
+            const subDataArr = getTotalProgressRecursion(subData);
+            total[0] += subDataArr[0]
+            total[1] += subDataArr[1]
+        }
 
-// ref[0].remove();
+        return total;
+    }     
+}
 
-// что бы заменить 1 элемент другим
+const result = getTotalProgressRecursion(students);
 
-// hearts[0].replaceWith(ref[1]);
+console.log(result[0] / result[1]);
 
-// УСТАРЕВШИЕ МЕТОДЫ !!!!!!
-
-// wrapper.appendChild(div);
-
-// wrapper.insertBefore(div, hearts[0]);
-
-// wrapper.removeChild(nan[0]);
-
-// wrapper.replaceChild(ref[0], hearts[0]);
-// ----------------------------------------------------------------------------------
-
-div.innerHTML = 'Hello world';
-
-// остановился 26.41
+// console.log(getTotalProgress(progress));
