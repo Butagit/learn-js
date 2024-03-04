@@ -1,36 +1,83 @@
 'use strict';
-// что бы найти элемент по айди
-// const header = document.getElementById('header');
+// рефакторинг кода это когда была переменная которая использовалась 1 раз потом оказываеться что она используеться еще раз и мы просто перемещаем ее 
+// сюда
+// то есть создаем переменую
+const header = document.getElementById('header');
+const btns = document.getElementsByTagName('button');
+const ref = document.getElementsByClassName('ref');
+const hearts = document.querySelectorAll('.heart'); 
+const oneHearts = document.querySelector('.heart'); 
+const wrapper = document.querySelector('.wrapper');
+const nan = document.querySelectorAll('.nan');
+// const logo = document.getElementsByClassName('header_logo');
+// header.style.backgroundColor = 'red';
+// header.style.width = '100px';
+btns[2].style.borderRadius = '100%';
+// для класса нужно обязательно указывать его нумерацию
+ref[1].style.backgroundColor = 'red';
 
-// console.log(header);
+// css текст через него можно назначит несколько инлайн стилей
+header.style.cssText = 'background-color: blue; width: 150px';
+// const num = '150';
+// header.style.cssText = `background-color: blue; width: ${num}px `; //можно еще так писать
+// мы делаем перебор если нам надо над несколькими элементами сделать одни и теже действия
+// переменную i нужно начинать и 0 так как элементы в массивах начинаються с 0
+// for (let i = 0; i < hearts.length; i++) {
+//     hearts[i].style.backgroundColor = 'red';
+// };
 
-// что бы найти элемент по тегу
-// const btns = document.getElementsByTagName('button');
+// метод forEach работает ТОЛЬКО если используешь querySelectorAll
+hearts.forEach(item => {
+    item.style.backgroundColor = 'red';
+});    
 
-// console.log(btns);
+// основные методы с работой страницы
 
-// если элементов много с таким же тегом и нам надо выбрать один из них нужно
+const div = document.createElement('div');
+// const text = document.createTextNode('text'); // этот метод используеться очень редко
 
-// const btns = document.getElementsByTagName('button'); // или перед ; ставить [нумерация элемента]
+// что бы поменять элемент координально нужно
+// мы модифицируем css классы элементов
 
-// console.log(btns[2]);// или так
+div.classList.add('black');
 
-// что бы найти элемент по классу 
-// const ref = document.getElementsByClassName('ref');
+// что бы добавить див в конце элемента body нужно
+// document.body.append(div);
+wrapper.append(div);
+// что бы поместить элемент в другого родителя нужно
+// document.querySelector('.header_logo').append(div);
 
-// console.log(ref);
+// элемент которые вставляет в начало
 
-// СОВРЕМЕННЫЕ МЕТОДЫ!!!!
-// в круглые скобки мы помещаем css селекторы, мы обязательно ставим точку
-// const hearts = document.querySelectorAll('.heart'); //его + в том что у него появляеться 1 метод forEach
+// wrapper.prepend(div);
 
-// нужно для того что бы вывести все элементи по очереодности в которые находятся в массиве 
-// hearts.forEach(item => {
-//     console.log(item);
-// });
+// таким способом мы можем ставить элементы перед другими
 
-// console.log(hearts);
+// hearts[1].before(div);
 
-// const oneHeart = document.querySelectorAll('.heart'); //позволяет получить только один(первый) элемент со страницы
+// таким способом мы можем ставить элементы после других
 
-// console.log(oneHeart);
+// hearts[1].after(div);
+
+// таким способом можно удалить элемент
+
+// ref[0].remove();
+
+// что бы заменить 1 элемент другим
+
+// hearts[0].replaceWith(ref[1]);
+
+// УСТАРЕВШИЕ МЕТОДЫ !!!!!!
+
+// wrapper.appendChild(div);
+
+// wrapper.insertBefore(div, hearts[0]);
+
+// wrapper.removeChild(nan[0]);
+
+// wrapper.replaceChild(ref[0], hearts[0]);
+// ----------------------------------------------------------------------------------
+
+div.innerHTML = 'Hello world';
+
+// остановился 26.41
