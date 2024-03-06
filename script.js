@@ -1,28 +1,33 @@
-'use strict';
 
-// console.log(document.body);
-// console.log(document.head);
-// console.log(document.documentElement);
-// console.log(document.body.childNodes); // позволяет получить нам все ноты и узлы которые находятся внутри этого родителя
-// console.log(document.body.firstChild);
-// console.log(document.body.firstElementChild);
-// console.log(document.body.lastChild);
-// console.log(document.body.lastElementChild);
+// touchstart срабатывает при возникновение касание этого элемента
+//touchmove если палец прикасаеться элемента и начинает двигаться по нему
+//touchend как только палец оторвался от элемента
+//touchenter как только палец скользит по экрану и натыкаеться на этот элемент
+//touchleave продолжил скользик в пределах этого элемента
+//touchcancel возникает когда точко соприкосновение больше не регистрируеться на поверхности
 
-// console.log(document.querySelector('#current').parentNode); // если мыхотим использовать элемент 1 раз то нам не нужно его помещать в переменную!!!
-// console.log(document.querySelector('#current').parentElement); // таким образом я точно буду знать что получаю элемент
+document.addEventListener('DONContentLoaded', () => {
+    const box = document.querySelector('.box');
 
-// console.log(document.querySelector('[data-current="3"]').nextSibling); //что бы получить следующий за ним элемент то есть узлы(нота)
-// console.log(document.querySelector('[data-current="3"]').previousSibling); //что бы получить следующий за ним элемент то есть узлы(нота)
-// console.log(document.querySelector('[data-current="3"]').nextElementSibling); //что бы получить следующий за ним ЭЛЕМЕНТ
+    box.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        console.log('Start');
+        console.log(e.targetTouches[0].pageX); // показывает координаты касание пальца
+        // console.log(e.targetTouches);
+        // console.log(e.touches);
+    });
+    
+    // box.addEventListener('touchmove', (e) => {
+    //     e.preventDefault();
+    //     console.log('move');
+    // });
 
-// позволяет нам перебрать все элементы которые находяться в псевдо коллекции
-for (let node of document.body.childNodes) {
-    if (node.nodeName == '#text') {
-        continue;
-    }
-    console.log(node);
-//таким способом мы оставили только элементы
-}
+    // box.addEventListener('touchend', (e) => {
+    //     e.preventDefault();
+    //     console.log('move');
+    // });
+});
 
-
+// touches свойство которое выдает список всех пальцев которые сейчас взаимодействуют с экраном и не важно где они находятся
+//targetTouches если нас интересует список пальцев которые взаимодействуют с конкрентным элементов 
+//changedTouches список пальцев которые учавствуют в текущем событии(пример: если событие touchend то список будет содержать палец который был убран, даже если на экране остались другие пальцы)
