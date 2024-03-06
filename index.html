@@ -1,24 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            height: 1000px;
-        }
-        .box {
-            width: 150px;
-            height: 100px;
-            background-color: red;
-        }
-    </style>
-</head>
-<body>
-    <div class="box">
-        Touch me!
-    </div>
-    <script src="script.js"></script>
-</body>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+</head> 
+<body> 
+    <!-- <script defer src="/js/script.js"></script> defer сообщает браузеру что он должен прогружать и обрабатывать страницу и загружать этот скрипт в фоновом режиме 
+    а затем запустить его когда он загрузится 
+    ГЛАВНОЕ скрипты с defer никогда не блокирует страницу 
+    ГЛАВНОЕ скрипты с таким атрибутом всегда когда наше DOM дерево уже готово 
+    ГЛАВНОЕ если таких скриптов будет несколько то они будут выполняться последовательно 
+    ГЛАВНЫЙ НЕДОСТАТОК если первый скрипт больше а второй меньше то 2 скрипт будет ждать пока первый не прогрузится--> 
+    <!-- <script defer src="/js/test.js"></script> --> 
+ 
+    <!-- <script async src="/js/test.js"></script> --> 
+     <!--ОСОБЕННОСТИ ЭТОГО АТРИБУТА 1 страница не ждет ассинхронных скриптов 
+    содержимое просто обрабатывается и отображается 
+    2 то что событие DOMContactLoaded и ассинхронные скриптыне ждут друг друга 
+    ОН ЗАПУГРУЖАЕТСЯ В ФОНОВОМ РЕЖИМЕ НО НИКОГО НЕ ЖДЕТ--> 
+    <!-- <script async src="/js/test.js"></script> --> 
+    <p>Hello world!</p> 
+ 
+    <p>Second message</p> 
+ 
+    <script src="/js/script.js"></script> 
+</body> 
 </html>
