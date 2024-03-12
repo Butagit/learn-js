@@ -1,65 +1,36 @@
-// const timer = setTimeout(function() {
-    //     console.log('hi');
-    // }, 2000);
-    
-    // такой способ используеться редко
-    // const timer = setTimeout(function(text) {
-    //     console.log(text);
-    // }, 2000, 'okey');
+// const now = new Date('2020-12-4'); // только тут это происходит автоматически
+//     new Date.parse('2020-12-4'); // а сдечь мы используем метод но результат одни и тот же
+// const now = new Date(1710000563145);
+// const now = new Date(2024, 3, 9, 20);
+// все измеряется в миллисекундах 
+// console.log(now.getFullYear());
+// console.log(now.getMonth());
+// console.log(now.getDay());
+// console.log(now.getDate());
+// console.log(now.getHours());
+// console.log(now.getUTCHours());
+// console.log(now.getTimezoneOffset()); // это разница между часовым поясом и UTC
+// console.log(now.getTime()); //колличество миллисекунд пройденных с 1970 года по сей день
+// console.log(now.setFullYear(2005));
+// console.log(now.setMonth(12));
+// // console.log(now.setDay(4));
+// console.log(now.setDate(1));
+// console.log(now.setHours(18, 40, 53)); 
+// // console.log(now.setHours(18)); // в консоли может показывать на 3 часа раньше но в браузере будет показывать как надо 
+// // так как браузер подстраивается под наш регион
+// преобразование динамичных типов данных и поставить + перед обьектом даты
 
-const btn = document.querySelector('.btn');
-let timerId;
+// есть еще оператор ** который возводит в степень число
 
-let i = 0;
+// let start = new Date() // берем 1 дату
 
-function myAnimation() {
-    const elem = document.querySelector('.box');
-    let pos = 0;
-    const id = setInterval(frame, 10);
+// for (let i = 0; i < 100000; i++) {
+//     let some = i ** 3;
+// };
 
-    function frame() {
-        if (pos == 300) {
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + 'px';
-            elem.style.left = pos + 'px';
-        }
-    }
+// let end = new Date(); // 2 дату 
 
-}
-
-
-
-btn.addEventListener('click', myAnimation);
-
-// btn.addEventListener('click', () => {
-//     // const timerId = setTimeout(logger, 2000); //тут функцию вызывать не нужно, мы передаем ссылку
-//     timerId = setInterval(logger, 500); // сначало идет задержка 500 потом идет logger который прогружаеться 3 секунду потом задержка и опять logger и потом интервал не будет опять ждать 500, он думат что эти 500 уже прошли во время выполнение этой функции и он сразу же начнет запускать функцию logger
-// });
-
-// // setTimeout(logger, 2000); //может работать без назначение переменной, но лучше работать с потому что так мы сможем ее определить и в случае чего мы могли ее остановить
-
-// // clearInterval(timerId); // таким способ мы остановили setTimeout и теперь в консоль ничего ничего не булет выводиться 
-
-// function logger() {
-//     if (i === 3) {
-//         clearInterval(timerId); 
-//     }
-//     console.log('text');
-//     i++;
-// }
-
-// // РЕКУРСИВНЫЙ setTimeout , то есть окод всегда будет ждать строго отведенное ему время
-
-// let id = setTimeout(function log() {
-//     console.log('hi');
-//     id = setTimeout(log, 500);
-// }, 500);
-
-
-
-
+// alert(`разница составляет ${end - start}`); //  и исчесляем их разницу
 
 
 
