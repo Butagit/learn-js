@@ -1,19 +1,56 @@
 
-function storage() {
-    const userList = [];
-    const addUser = (name, age) => {
-        const obj = {
-            name: name,
-            age: age
-        };
-        userList.push(obj)
-        console.log(`Пользователь name ${name} с возрастом ${age} был добавлен`) 
-    } 
-    return [userList, addUser]
+const deadline = '2024-04-19 ';
+
+function getTimeRemaining(endtime) {
+    const t = Date.parse(endtime) - Date.parse(new Date()),
+          days = Math.floor(t / (1000 * 60 * 60 * 24)),
+          hours = Math.floor(t / (1000 * 60 * 60) % 24),
+          minutes = Math.floor((t / 1000 * 60) % 60),
+          seconds = Math.floor((t / 1000) % 60);
+    return {
+        'total': t,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+    };
 }
-const [userList, addUser] = storage();
-addUser('ivan', 2)
-console.log(userList);
+
+function getZero(num) {
+    if (num >= 0 && num < 10) {
+        return `0${num}`;
+    } else {
+        return num;
+    }
+}
+
+function setClock(selector, endtime) {
+    const timer = document.querySelector(selector),
+          days = timer.querySelector('#days'),
+          hours = timer.querySelector('#hours'),
+          minutes = timer.querySelector('#minutes'),
+          seconds = timer.querySelector('#second');
+          timeInterval = setInterval(updateClock, 1000);
+
+          updateClock(); // вызывал для того что бы при обновление таймер не изменялся, это функци вызывается 1 раз, мы ее вызываем что бы не ждать 1 сек
+
+    function updateClock() {
+        const t = getTimeRemaining(endtime)
+        
+        days.innerHTML = getZero(t.days);
+        hours.innerHTML = getZero(t.hours);
+        minutes.innerHTML = getZero(t.minutes);
+        seconds.innerHTML = getZero(t.seconds);
+        
+        if (t.total <= 0) {
+            clearInterval(timeInterval);
+        }
+
+    }
+    updateClock()
+}
+
+setClock('.timer', deadline);
 
 
 
