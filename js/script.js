@@ -1,56 +1,33 @@
 
-const deadline = '2024-04-19 ';
+const box = document.querySelector('.box')
+const button = document.querySelector("button");
+// const height = box.clientHeight;
+// const width = box.clientWidth;
+// const height = box.offsetHeight;
+// const width = box.offsetWidth;
+// const height = box.scrollHeight;
+// const width = box.scrollWidth;
 
-function getTimeRemaining(endtime) {
-    const t = Date.parse(endtime) - Date.parse(new Date()),
-          days = Math.floor(t / (1000 * 60 * 60 * 24)),
-          hours = Math.floor(t / (1000 * 60 * 60) % 24),
-          minutes = Math.floor((t / 1000 * 60) % 60),
-          seconds = Math.floor((t / 1000) % 60);
-    return {
-        'total': t,
-        'days': days,
-        'hours': hours,
-        'minutes': minutes,
-        'seconds': seconds
-    };
-}
+button.addEventListener('click', () => {
+    // box.style.height = box.scrollHeight + 'px'; 
+    console.log(box.scrollTop); 
+})
 
-function getZero(num) {
-    if (num >= 0 && num < 10) {
-        return `0${num}`;
-    } else {
-        return num;
-    }
-}
-
-function setClock(selector, endtime) {
-    const timer = document.querySelector(selector),
-          days = timer.querySelector('#days'),
-          hours = timer.querySelector('#hours'),
-          minutes = timer.querySelector('#minutes'),
-          seconds = timer.querySelector('#second');
-          timeInterval = setInterval(updateClock, 1000);
-
-          updateClock(); // вызывал для того что бы при обновление таймер не изменялся, это функци вызывается 1 раз, мы ее вызываем что бы не ждать 1 сек
-
-    function updateClock() {
-        const t = getTimeRemaining(endtime)
-        
-        days.innerHTML = getZero(t.days);
-        hours.innerHTML = getZero(t.hours);
-        minutes.innerHTML = getZero(t.minutes);
-        seconds.innerHTML = getZero(t.seconds);
-        
-        if (t.total <= 0) {
-            clearInterval(timeInterval);
-        }
-
-    }
-    updateClock()
-}
-
-setClock('.timer', deadline);
+console.log(height, width);
 
 
+// получает все координаты которые есть у элемента 
+console.log(box.getBoundingClientRect);
+// если мы смотрит расстояние right то мы должны знать что это считаеться от левой границы до правой границы элемента
+// когда мы смотрим с низу у нас bottom рассчитываеться с верхней гарницы до нижней границы элемента 
+// console.log(box.getBoundingClientRect.top); тут мы получим только значение top
 
+// как получить стили которые уже были применены из css 
+
+const style = window.getComputedStyle(box,);
+
+console.logs(style); //так же через точку мы можем выбрать нужный нам стиль
+// мы не можем просто так работать с псевдо элеметами, но стили псевдо элеметов мы можем получить что бы это сделать нужно прописать сюда как 2 значение 
+// const style = window.getComputedStyle(box,);
+
+console.log(document.documentElement.scrollTop); //для того что юы узнать количество пикселей

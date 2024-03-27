@@ -1,35 +1,4 @@
-.timer {
-  margin-top: 100px;
-  margin-left: 100px;
-  width: 1000px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-/* .tab {
-  width: 200px;
-  height: 300px;
-} */
-
-.days {
-  width: 200px;
-  height: 300px;
-  border: 2px solid black;
-}
-.hours {
-  width: 200px;
-  height: 300px;
-  border: 2px solid black;
-}
-.minutes {
-  width: 200px;
-  height: 300px;
-  border: 2px solid black;
-}
-.seconds {
-  width: 200px;
-  height: 300px;
-  border: 2px solid black;
+.box {
+  height: 100px;
+  width: 100px;
 }
